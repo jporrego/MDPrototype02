@@ -8,11 +8,11 @@ public class UI_Shop : MonoBehaviour
     public Transform menuItemTemplate;
     private Object[] menuItemsArray;
 
-    private GameObject inputController;
+    private GameObject PlayerController;
     // Start is called before the first frame update
     void Start()
     {
-        inputController = GameObject.Find("InputController");
+        PlayerController = GameObject.Find("PlayerController");
         menuItemsArray = Resources.LoadAll("ScriptableObjects", typeof(PlacedObjectTypeSO));
         foreach (PlacedObjectTypeSO item in menuItemsArray)
         {
@@ -25,6 +25,6 @@ public class UI_Shop : MonoBehaviour
 
     void OnMenuItemClick(PlacedObjectTypeSO item)
     {
-        inputController.GetComponent<InputController>().SetSelectedObject(item);
+        PlayerController.GetComponent<PlayerController>().SetSelectedObject(item);
     }
 }

@@ -9,7 +9,7 @@ public class PlacedObject : MonoBehaviour
     // The create function instantiates a prefab with the placedObject component, and then fills the component data with
     // the data passed when calling Create()
 
-    private PlacedObjectTypeSO placedObjectTypeSO;
+    public PlacedObjectTypeSO placedObjectTypeSO;
     private Vector2Int origin;
     private PlacedObjectTypeSO.Dir dir;
 

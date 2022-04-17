@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using CodeMonkey.Utils;
 
-public class InputController : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     private bool isSelected = false;
     private PlacedObjectTypeSO selectedObject;
@@ -63,10 +63,30 @@ public class InputController : MonoBehaviour
             }
 
         }
+        else
+        {
+            // Here we handle the logic for when there's not object already selected.
+            if (Input.GetMouseButtonDown(0))
+            {
+                LayerMask mask = LayerMask.GetMask("GridLayer");
+
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                if (Physics.Raycast(ray, out RaycastHit hit, float.MaxValue, ~mask))
+                {
+                    GameObject objectHit = hit.collider.transform.root.gameObject;
+                    if (objectHit.tag == "PlaceableObject")
+                    {
+                        SetSelectedObject(objectHit.GetComponent<PlacedObject>().placedObjectTypeSO);
+                        objectHit.GetComponent<PlacedObject>().DestroySelf();
+                    }
+
+                }
+            }
+        }
     }
     private void LateUpdate()
     {
-        if (selectedObject != null && currentBuildingArea != null && raycastHitLocation != null)
+        if (isSelected == true && selectedObject != null && currentBuildingArea != null && raycastHitLocation != null)
         {
             PreviewObjectLocation(currentBuildingArea, selectedObject, raycastHitLocation);
         }
@@ -75,9 +95,12 @@ public class InputController : MonoBehaviour
 
     public void SetSelectedObject(PlacedObjectTypeSO objectToSelect)
     {
-        selectedObject = objectToSelect;
-        previewVisual = Instantiate(selectedObject.prefab, worldPosition, Quaternion.identity);
+        //REVISIT
         isSelected = true;
+        selectedObject = objectToSelect;
+        //currentBuildingArea.grid.GetXZ(raycastHitLocation, out int x, out int z);
+        previewVisual = Instantiate(selectedObject.prefab, UtilsClass.Get3DMouseWorldPosition(), Quaternion.identity);
+
     }
 
     // Revisit Preview visual to use a PlacedObjectTypeSO to be able to set its rotation.

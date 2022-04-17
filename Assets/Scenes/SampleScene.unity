@@ -682,7 +682,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6945665358474775145, guid: 6c9e27ffef2cb64478c0e5ec39f72793, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6945665358474775146, guid: 6c9e27ffef2cb64478c0e5ec39f72793, type: 3}
       propertyPath: m_RootOrder
@@ -749,7 +749,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1519813445
 Transform:
   m_ObjectHideFlags: 0
@@ -863,7 +863,7 @@ Camera:
   far clip plane: 999.96
   field of view: 60
   orthographic: 1
-  orthographic size: 2.5
+  orthographic size: 0.59
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1096,7 +1096,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2002031161108545917, guid: 0cccc88d35f52a744998cdb3f6949759, type: 3}
       propertyPath: m_Name
-      value: InputController
+      value: PlayerController
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0cccc88d35f52a744998cdb3f6949759, type: 3}
